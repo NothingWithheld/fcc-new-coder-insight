@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Box from "@material-ui/core/Box";
 import FilterControls from "./FilterControls";
 import Chip from "@material-ui/core/Chip";
@@ -6,6 +6,7 @@ import Button from "@material-ui/core/Button";
 import { calcAvgEarnings, orFilterFuncs, andFilterFuncs } from "../utils";
 import { withStyles } from "@material-ui/core/styles";
 import BarChart from "./BarChart";
+import Typography from "@material-ui/core/Typography";
 
 const SpacedChip = withStyles({ root: { margin: "4px" } })(Chip);
 
@@ -61,14 +62,16 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
     setAndBool("true");
   };
 
+  const handleBarClick = useCallback((i) => setUsingInd(i), []);
+
   return (
     <Box display="flex" marginTop="50px" justifyContent="center">
       <Box marginRight="24px" width="100%" maxWidth="400px">
-        <Box>
+        <Box marginBottom="16px">
           {savedChecks.map((_, i) =>
             i === 0 ? (
               <SpacedChip
-                label={`Selection ${i + 1}`}
+                label="Average of Everyone"
                 onClick={handleSwitch(i)}
                 key={i}
               />
@@ -86,6 +89,13 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
             onClick={() => setUsingInd(null)}
           />
         </Box>
+        <Typography variant="h6">
+          {usingInd === null
+            ? "Edit Current Selection"
+            : usingInd === 0
+            ? "View Selection of Everyone"
+            : `View Selection ${usingInd + 1}`}
+        </Typography>
         <FilterControls
           filterFuncDetails={filterFuncDetails}
           checks={usingInd !== null ? savedChecks[usingInd] : checks}
@@ -107,7 +117,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
           Add Selection
         </Button>
       </Box>
-      <BarChart data={savedAvgs} />
+      <BarChart data={savedAvgs} handleClick={handleBarClick} />
     </Box>
   );
 };

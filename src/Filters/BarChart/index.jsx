@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
-function BarChart({ data }) {
+function BarChart({ data, handleClick }) {
   const chartRef = useRef();
   const axisRef = useRef();
   const tooltipRef = useRef();
@@ -44,7 +44,9 @@ function BarChart({ data }) {
         .append("rect")
         .on("mouseover", ([avg, num], i) => {
           d3.select(tooltipRef.current).style("opacity", 1);
-          d3.select(tooltipHeadingRef.current).text(`Selection ${i + 1}`);
+          d3.select(tooltipHeadingRef.current).text(
+            i === 0 ? "Average of Everyone" : `Selection ${i + 1}`
+          );
           d3.select(tooltipEarningsRef.current).text(
             `Average expected earnings: $${avg}`
           );
@@ -59,6 +61,7 @@ function BarChart({ data }) {
             .style("left", `${d3.event.pageX + 10}px`)
             .style("top", `${d3.event.pageY + 10}px`)
         )
+        .on("click", (_, i) => handleClick(i))
         .attr("fill", "#9c27b0")
         .attr("x", (_, i) => i * 45 + 55)
         .attr("y", () => 400)
@@ -79,7 +82,7 @@ function BarChart({ data }) {
     };
 
     draw();
-  }, [data]);
+  }, [data, handleClick]);
 
   return (
     <Box>

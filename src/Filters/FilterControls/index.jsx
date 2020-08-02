@@ -20,7 +20,7 @@ const FilterControls = ({
       display="flex"
       flexDirection="column"
       alignItems="center"
-      margin="14px 0"
+      marginBottom="14px"
     >
       <RadioGroup row value={andBool} onChange={handleBoolChange}>
         <FormControlLabel

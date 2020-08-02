@@ -19,8 +19,7 @@ function App() {
         setLoading(false);
       });
   }, []);
-  // console.log(rowData);
-  console.log(allAvgData);
+  console.log(rowData);
 
   return (
     <div className="App">
