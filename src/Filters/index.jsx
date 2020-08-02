@@ -73,6 +73,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
               <SpacedChip
                 label="Average of Everyone"
                 onClick={handleSwitch(i)}
+                color={i === usingInd ? "primary" : "default"}
                 key={i}
               />
             ) : (
@@ -80,6 +81,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
                 label={`Selection ${i + 1}`}
                 onClick={handleSwitch(i)}
                 onDelete={handleDelete(i)}
+                color={i === usingInd ? "primary" : "default"}
                 key={i}
               />
             )
@@ -87,6 +89,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
           <SpacedChip
             label={`Current Selection`}
             onClick={() => setUsingInd(null)}
+            color={usingInd === null ? "primary" : "default"}
           />
         </Box>
         <Typography variant="h6">
