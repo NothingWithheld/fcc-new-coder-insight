@@ -1,12 +1,12 @@
 export const calcAvgEarnings = (rowData) => {
   if (rowData.length === 0) return 0;
 
-  return (
+  return +(
     rowData.reduce(
       (acc, { ExpectedEarning }) => acc + parseFloat(ExpectedEarning),
       0
     ) / rowData.length
-  );
+  ).toFixed(2);
 };
 
 export const filterDataFunc = (name, func) => (data) =>

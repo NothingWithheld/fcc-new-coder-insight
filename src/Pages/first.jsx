@@ -2,11 +2,11 @@ import React from "react";
 import { filterDataFunc } from "../utils";
 import Filters from "../Filters";
 
-const Page = ({ rowData, allAvg }) => {
+const Page = ({ rowData, allAvgData }) => {
   return (
     <Filters
       rowData={rowData}
-      allAvg={allAvg}
+      allAvgData={allAvgData}
       filterFuncDetails={[
         [
           "Attended Bootcamp",
