@@ -16,19 +16,36 @@ const FilterControls = ({
   handleBoolChange,
 }) => {
   return (
-    <Box>
-      <RadioGroup value={andBool} onChange={handleBoolChange}>
-        <FormControlLabel value={true} contro={<Radio />} label="And" />
-        <FormControlLabel value={false} contro={<Radio />} label="Or" />
-      </RadioGroup>
-      {filterFuncDetails.map(([label], i) => (
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      margin="14px 0"
+    >
+      <RadioGroup row value={andBool} onChange={handleBoolChange}>
         <FormControlLabel
-          control={<Checkbox checked={checks[i]} onChange={handleCheck(i)} />}
+          value="true"
+          control={<Radio />}
+          label="And"
           disabled={disabled}
-          label={label}
-          key={i}
         />
-      ))}
+        <FormControlLabel
+          value="false"
+          control={<Radio />}
+          label="Or"
+          disabled={disabled}
+        />
+      </RadioGroup>
+      <Box display="flex" flexDirection="column">
+        {filterFuncDetails.map(([label], i) => (
+          <FormControlLabel
+            control={<Checkbox checked={checks[i]} onChange={handleCheck(i)} />}
+            disabled={disabled}
+            label={label}
+            key={i}
+          />
+        ))}
+      </Box>
     </Box>
   );
 };
