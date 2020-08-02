@@ -9,10 +9,11 @@ export const calcAvgEarnings = (rowData) => {
   );
 };
 
-export const filterDataFunc = (name, func) => (data) => func(data[name]);
+export const filterDataFunc = (name, func) => (data) =>
+  data[name] === "" ? false : func(data[name]);
 
 export const orFilterFuncs = (filterFuncs) => (data) =>
   filterFuncs.reduce((acc, func) => acc || func(data), true);
 
-export const andFilterFunc = (filterFuncs) => (data) =>
+export const andFilterFuncs = (filterFuncs) => (data) =>
   filterFuncs.reduce((acc, func) => acc && func(data), true);
