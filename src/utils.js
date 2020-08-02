@@ -13,7 +13,7 @@ export const filterDataFunc = (name, func) => (data) =>
   data[name] === "" ? false : func(data[name]);
 
 export const orFilterFuncs = (filterFuncs) => (data) =>
-  filterFuncs.reduce((acc, func) => acc || func(data), true);
+  filterFuncs.reduce((acc, func) => acc || func(data), false);
 
 export const andFilterFuncs = (filterFuncs) => (data) =>
   filterFuncs.reduce((acc, func) => acc && func(data), true);

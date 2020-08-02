@@ -60,7 +60,6 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
     setUsingInd(null);
     setAndBool("true");
   };
-  console.log({ savedAvgs });
 
   return (
     <Box display="flex" marginTop="50px" justifyContent="center">
