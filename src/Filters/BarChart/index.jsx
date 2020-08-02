@@ -3,7 +3,7 @@ import React, { useRef, useEffect } from "react";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
 
-function BarChart({ data, handleClick }) {
+function BarChart({ data, handleClick, selectedInd }) {
   const chartRef = useRef();
   const axisRef = useRef();
   const tooltipRef = useRef();
@@ -36,6 +36,7 @@ function BarChart({ data, handleClick }) {
       rectangles
         .transition()
         .duration(300)
+        .attr("fill", (_, i) => (i === selectedInd ? "#ff9100" : "#9c27b0"))
         .attr("height", ([avg]) => 400 - yScale(avg))
         .attr("y", ([avg]) => yScale(avg));
 
@@ -82,7 +83,7 @@ function BarChart({ data, handleClick }) {
     };
 
     draw();
-  }, [data, handleClick]);
+  }, [data, handleClick, selectedInd]);
 
   return (
     <Box>

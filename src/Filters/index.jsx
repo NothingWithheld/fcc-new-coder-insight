@@ -117,7 +117,11 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
           Add Selection
         </Button>
       </Box>
-      <BarChart data={savedAvgs} handleClick={handleBarClick} />
+      <BarChart
+        data={savedAvgs}
+        handleClick={handleBarClick}
+        selectedInd={usingInd}
+      />
     </Box>
   );
 };

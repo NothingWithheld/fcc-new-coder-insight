@@ -41,7 +41,6 @@ function App() {
         setLoading(false);
       });
   }, []);
-  console.log(rowData);
 
   return (
     <Box
