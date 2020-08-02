@@ -65,7 +65,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
   const handleBarClick = useCallback((i) => setUsingInd(i), []);
 
   return (
-    <Box display="flex" marginTop="50px" justifyContent="center">
+    <Box display="flex" marginTop="20px" justifyContent="center">
       <Box marginRight="24px" width="100%" maxWidth="400px">
         <Box marginBottom="16px">
           {savedChecks.map((_, i) =>
