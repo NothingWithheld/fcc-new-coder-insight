@@ -99,6 +99,9 @@ function BarChart({ data, handleClick, selectedInd }) {
         <Typography ref={tooltipEarningsRef} />
         <Typography ref={tooltipCountRef} />
       </Box>
+      <Typography variant="h6">
+        Average Expected Earnings for Criteria (USD)
+      </Typography>
       <svg ref={chartRef}>
         <g ref={axisRef} transform="translate(50, 0)" />
       </svg>

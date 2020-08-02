@@ -32,6 +32,8 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
   const handleDelete = (i) => () => {
     if (i === usingInd) {
       setUsingInd(null);
+    } else if (usingInd > i) {
+      setUsingInd(usingInd - 1);
     }
 
     setSavedChecks(savedChecks.filter((_, ii) => i !== ii));
@@ -102,7 +104,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
         <FilterControls
           filterFuncDetails={filterFuncDetails}
           checks={usingInd !== null ? savedChecks[usingInd] : checks}
-          disabled={usingInd !== null}
+          disabled={usingInd !== null || savedAvgs.length === 13}
           handleCheck={handleCheck}
           handleBoolChange={handleBoolChange}
           andBool={usingInd !== null ? savedAndBools[usingInd] : andBool}
