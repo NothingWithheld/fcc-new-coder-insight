@@ -120,6 +120,13 @@ function App() {
                 the "PREV" and "NEXT" buttons to the upper right of the bar
                 chart.
               </SpacedTypography>
+              <SpacedTypography>
+                The first selection of every scene is the average of all
+                responses. The second selection of every scene, except the
+                everything scene (computation time is too long), is the
+                selection that results in the lowest non-zero average. Have fun
+                finding the selection with the highest average!
+              </SpacedTypography>
             </Box>
             <Box display="flex" flexDirection="row-reverse" paddingRight="60px">
               <ButtonGroup variant="contained" color="primary">

@@ -9,7 +9,8 @@ const Page = ({ rowData, allAvgData }) => {
       <Typography variant="h5">Bootcamp</Typography>
       <Filters
         rowData={rowData}
-        allAvgData={allAvgData}
+        avgData={[allAvgData, [47277.78, 18]]}
+        lowestResultCombo={[true, false, false, true, false, true, false, true]}
         filterFuncDetails={[
           [
             "Attended Bootcamp",

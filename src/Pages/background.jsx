@@ -9,7 +9,18 @@ const Page = ({ rowData, allAvgData }) => {
       <Typography variant="h5">Age/Gender/Diversity</Typography>
       <Filters
         rowData={rowData}
-        allAvgData={allAvgData}
+        avgData={[allAvgData, [36873.59, 17]]}
+        lowestResultCombo={[
+          true,
+          false,
+          false,
+          false,
+          true,
+          false,
+          false,
+          false,
+          true,
+        ]}
         filterFuncDetails={[
           ["Age < 18", filterDataFunc("Age", (val) => parseFloat(val) < 18)],
           [

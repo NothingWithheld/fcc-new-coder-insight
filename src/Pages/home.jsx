@@ -9,7 +9,21 @@ const Page = ({ rowData, allAvgData }) => {
       <Typography variant="h5">Geography/Home Information</Typography>
       <Filters
         rowData={rowData}
-        allAvgData={allAvgData}
+        avgData={[allAvgData, [27907.2, 5]]}
+        lowestResultCombo={[
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          false,
+          false,
+          true,
+        ]}
         filterFuncDetails={[
           [
             "US Citizen",

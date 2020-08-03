@@ -10,12 +10,21 @@ import Typography from "@material-ui/core/Typography";
 
 const SpacedChip = withStyles({ root: { margin: "4px" } })(Chip);
 
-const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
-  const [savedChecks, setSavedChecks] = useState([
-    filterFuncDetails.map(() => false),
-  ]);
-  const [savedAndBools, setSavedAndBools] = useState(["true"]);
-  const [savedAvgs, setSavedAvgs] = useState([allAvgData]);
+const Filters = ({
+  filterFuncDetails,
+  rowData,
+  avgData,
+  lowestResultCombo,
+}) => {
+  const [savedChecks, setSavedChecks] = useState(
+    lowestResultCombo !== null
+      ? [filterFuncDetails.map(() => false), lowestResultCombo]
+      : [filterFuncDetails.map(() => false)]
+  );
+  const [savedAndBools, setSavedAndBools] = useState(
+    lowestResultCombo !== null ? ["true", "true"] : ["true"]
+  );
+  const [savedAvgs, setSavedAvgs] = useState([...avgData]);
   const [usingInd, setUsingInd] = useState(null);
   const [checks, setChecks] = useState(() =>
     filterFuncDetails.map(() => false)
@@ -78,6 +87,13 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
                 color={i === usingInd ? "primary" : "default"}
                 key={i}
               />
+            ) : lowestResultCombo !== null && i === 1 ? (
+              <SpacedChip
+                label="Lowest Non-Zero Average"
+                onClick={handleSwitch(i)}
+                color={i === usingInd ? "primary" : "default"}
+                key={i}
+              />
             ) : (
               <SpacedChip
                 label={`Selection ${i + 1}`}
@@ -126,6 +142,7 @@ const Filters = ({ filterFuncDetails, rowData, allAvgData }) => {
         data={savedAvgs}
         handleClick={handleBarClick}
         selectedInd={usingInd}
+        hasLowest={lowestResultCombo !== null}
       />
     </Box>
   );

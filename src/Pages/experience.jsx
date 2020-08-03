@@ -9,7 +9,17 @@ const Page = ({ rowData, allAvgData }) => {
       <Typography variant="h5">Experience Learning/Programming</Typography>
       <Filters
         rowData={rowData}
-        allAvgData={allAvgData}
+        avgData={[allAvgData, [49422.38, 753]]}
+        lowestResultCombo={[
+          false,
+          false,
+          true,
+          false,
+          true,
+          false,
+          false,
+          false,
+        ]}
         filterFuncDetails={[
           [
             "Hours Spent Learning a Week < 10",

@@ -17,3 +17,38 @@ export const orFilterFuncs = (filterFuncs) => (data) =>
 
 export const andFilterFuncs = (filterFuncs) => (data) =>
   filterFuncs.reduce((acc, func) => acc && func(data), true);
+
+export const findSmallestCombo = (rowData, filterFuncs) => {
+  let lowestResult = 10000000;
+  let lowestCombo = null;
+  let lowestCount = null;
+
+  const tryAllSubsets = (ind, stack, truesLeft) => {
+    if (ind === filterFuncs.length) {
+      const usingFuncs = filterFuncs.filter((_, i) => stack[i]);
+      const andRowData = rowData.filter(andFilterFuncs(usingFuncs));
+      const andResult = calcAvgEarnings(andRowData);
+
+      if (andResult > 0 && andResult < lowestResult) {
+        lowestResult = andResult;
+        lowestCombo = [...stack];
+        lowestCount = andRowData.length;
+      }
+
+      return;
+    }
+
+    if (truesLeft > 0) {
+      stack.push(true);
+      tryAllSubsets(ind + 1, stack, truesLeft - 1);
+      stack.pop();
+    }
+
+    stack.push(false);
+    tryAllSubsets(ind + 1, stack, truesLeft);
+    stack.pop();
+  };
+
+  tryAllSubsets(0, [], 12);
+  console.log({ lowestResult, lowestCombo, lowestCount });
+};

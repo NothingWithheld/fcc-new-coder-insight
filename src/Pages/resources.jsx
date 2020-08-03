@@ -9,7 +9,19 @@ const Page = ({ rowData, allAvgData }) => {
       <Typography variant="h5">Resources Found Helpful</Typography>
       <Filters
         rowData={rowData}
-        allAvgData={allAvgData}
+        avgData={[allAvgData, [39114.29, 35]]}
+        lowestResultCombo={[
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+        ]}
         filterFuncDetails={[
           [
             "Found CSS Tricks Helpful",
